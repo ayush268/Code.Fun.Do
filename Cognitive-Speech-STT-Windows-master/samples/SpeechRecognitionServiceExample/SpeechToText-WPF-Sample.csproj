@@ -71,10 +71,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SpeechClient, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86" Condition=" '$(Platform)' == 'x86' ">
-      <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeechRecognition-x86.1.0.0.3\lib\SpeechClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="SpeechClient, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64" Condition=" '$(Platform)' == 'x64' ">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.SpeechRecognition-x64.1.0.0.3\lib\SpeechClient.dll</HintPath>
       <Private>True</Private>
@@ -95,14 +91,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="batman.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="whatstheweatherlike.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(_TargetsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("batman.wav")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("whatstheweatherlike.wav")]
 
 

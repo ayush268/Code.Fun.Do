@@ -16,8 +16,6 @@ C:\Users\Harish\Documents\Visual Studio 2015\Cognitive-Speech-STT-Windows-master
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\SpeechToText-WPF-Sample.exe.config
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample.exe
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample.pdb
-D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\batman.wav
-D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\whatstheweatherlike.wav
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\SpeechToText-WPF-Sample.exe
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\SpeechToText-WPF-Sample.pdb
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\objd\amd64\SpeechClient.dll
@@ -25,6 +23,5 @@ D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServ
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\MainWindow.baml
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\MainWindow.g.cs
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\App.g.cs
-D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample_Content.g.cs
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample_MarkupCompile.cache
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample.g.resources

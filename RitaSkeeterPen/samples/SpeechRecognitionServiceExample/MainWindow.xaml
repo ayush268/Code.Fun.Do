@@ -26,7 +26,7 @@
                 <StackPanel Orientation="Vertical">
                     <Label>Speech Recognition Source:</Label>
                     <RadioButton x:Name="_micDictationRadioButton" Margin="10, 10, 0, 0" Click="RadioButton_Click" IsChecked="True">Use Microphone with LongDictation mode</RadioButton>
-                    <RadioButton x:Name="_micIntentRadioButton" IsChecked="{Binding ElementName=_mainWindow, Path=IsMicrophoneClientWithIntent}" Margin="10, 10, 0, 0" Click="RadioButton_Click" IsEnabled="False">Use Microphone and intent detection</RadioButton>
+                    <RadioButton x:Name="_micIntentRadioButton" IsChecked="{Binding ElementName=_mainWindow, Path=IsMicrophoneClientWithIntent}" Margin="10, 10, 0, 0" Click="RadioButton_Click">Use Microphone and intent detection</RadioButton>
                     <Label Margin="30,0,0,0" Content="(* LUIS registration is needed.)(**Do not use for now)"/>
                 </StackPanel>
             </GroupBox>

@@ -524,6 +524,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             this._logText.Text = string.Empty;
             this._startButton.IsEnabled = true;
             this._stopButton.IsEnabled = false;
+            this._outputButton.IsEnabled = true;
             this._radioGroup.IsEnabled = true;
         }
     }

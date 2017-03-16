@@ -50,12 +50,12 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <summary>
         /// The isolated storage subscription key file name.
         /// </summary>
-        private const string IsolatedStorageSubscriptionKeyFileName = "Subscription.txt";
+        //private const string IsolatedStorageSubscriptionKeyFileName = "Subscription.txt";
 
         /// <summary>
         /// The default subscription key prompt message
         /// </summary>
-        private const string DefaultSubscriptionKeyPromptMessage = "Paste your subscription key here to start";
+        //private const string DefaultSubscriptionKeyPromptMessage = "Paste your subscription key here to start";
 
         /// <summary>
         /// You can also put the primary key in app.config, instead of using UI.
@@ -66,7 +66,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <summary>
         /// The data recognition client
         /// </summary>
-        private DataRecognitionClient dataClient;
+        //private DataRecognitionClient dataClient;
 
         /// <summary>
         /// The microphone client
@@ -115,6 +115,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </value>
         public bool IsMicrophoneClientWithIntent { get; set; }
 
+        /*
         /// <summary>
         /// Gets or sets a value indicating whether this instance is data client short phrase.
         /// </summary>
@@ -138,6 +139,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <c>true</c> if this instance is data client dictation; otherwise, <c>false</c>.
         /// </value>
         public bool IsDataClientDictation { get; set; }
+        */
 
         /// <summary>
         /// Gets or sets subscription key
@@ -206,7 +208,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             {
                 return !string.IsNullOrEmpty(this.LuisAppId) &&
                     !string.IsNullOrEmpty(this.LuisSubscriptionID) &&
-                    (this.IsMicrophoneClientWithIntent || this.IsDataClientWithIntent);
+                    (this.IsMicrophoneClientWithIntent || false/*this.IsDataClientWithIntent*/);
             }
         }
 
@@ -221,7 +223,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             get
             {
                 if (this.IsMicrophoneClientDictation ||
-                    this.IsDataClientDictation)
+                    false/*this.IsDataClientDictation*/)
                 {
                     return SpeechRecognitionMode.LongDictation;
                 }
@@ -247,13 +249,13 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <value>
         /// The short wave file.
         /// </value>
-        private string ShortWaveFile
+        /*private string ShortWaveFile
         {
             get
             {
                 return ConfigurationManager.AppSettings["ShortWaveFile"];
             }
-        }
+        }*/
 
         /// <summary>
         /// Gets the long wave file path.
@@ -261,13 +263,13 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <value>
         /// The long wave file.
         /// </value>
-        private string LongWaveFile
+        /*private string LongWaveFile
         {
             get
             {
                 return ConfigurationManager.AppSettings["LongWaveFile"];
             }
-        }
+        }*/
 
         /// <summary>
         /// Gets the Cognitive Service Authentication Uri.
@@ -289,10 +291,11 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <param name="e">An System.EventArgs that contains the event data.</param>
         protected override void OnClosed(EventArgs e)
         {
-            if (null != this.dataClient)
+
+            /*if (null != this.dataClient)
             {
                 this.dataClient.Dispose();
-            }
+            }*/
 
             if (null != this.micClient)
             {
@@ -302,6 +305,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             base.OnClosed(e);
         }
 
+        /*
         /// <summary>
         /// Saves the subscription key to isolated storage.
         /// </summary>
@@ -319,6 +323,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 }
             }
         }
+        */
 
         /// <summary>
         /// Initializes a fresh audio session.
@@ -328,9 +333,9 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             this.IsMicrophoneClientShortPhrase = true;
             this.IsMicrophoneClientWithIntent = false;
             this.IsMicrophoneClientDictation = false;
-            this.IsDataClientShortPhrase = false;
-            this.IsDataClientWithIntent = false;
-            this.IsDataClientDictation = false;
+            //this.IsDataClientShortPhrase = false;
+            //this.IsDataClientWithIntent = false;
+            //this.IsDataClientDictation = false;
 
             // Set the default choice for the group of checkbox.
             this._micRadioButton.IsChecked = true;
@@ -366,7 +371,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
 
                 this.micClient.StartMicAndRecognition();
             }
-            else
+            /*else
             {
                 if (null == this.dataClient)
                 {
@@ -381,7 +386,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 }
 
                 this.SendAudioHelper((this.Mode == SpeechRecognitionMode.ShortPhrase) ? this.ShortWaveFile : this.LongWaveFile);
-            }
+            }*/
         }
 
         /// <summary>
@@ -390,18 +395,18 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         private void LogRecognitionStart()
         {
             string recoSource;
-            if (this.UseMicrophone)
+            //if (this.UseMicrophone)
             {
                 recoSource = "microphone";
             }
-            else if (this.Mode == SpeechRecognitionMode.ShortPhrase)
+            /*else if (this.Mode == SpeechRecognitionMode.ShortPhrase)
             {
                 recoSource = "short wav file";
             }
             else
             {
                 recoSource = "long wav file";
-            }
+            }*/
 
             this.WriteLine("\n--- Start speech recognition using " + recoSource + " with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n\n");
         }
@@ -465,6 +470,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             Process.Start("https://www.projectoxford.ai/doc/general/subscription-key-mgmt");
         }
 
+        /*
         /// <summary>
         /// Creates a data client without LUIS intent support.
         /// Speech recognition with data (for example from a file or audio source).  
@@ -554,6 +560,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 }
             }
         }
+        */
 
         /// <summary>
         /// Called when a final response is received;
@@ -866,18 +873,18 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             // Reset everything
-            if (this.micClient != null)
+            //if (this.micClient != null)
             {
                 this.micClient.EndMicAndRecognition();
                 this.micClient.Dispose();
                 this.micClient = null;
             }
 
-            if (this.dataClient != null)
+            /*if (this.dataClient != null)
             {
                 this.dataClient.Dispose();
                 this.dataClient = null;
-            }
+            }*/
 
             this._logText.Text = string.Empty;
             this._startButton.IsEnabled = true;

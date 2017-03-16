@@ -1,9 +1,9 @@
 # Changes made by Harish, so far
 Removing the requirement for the Bing Speech API subscription key.
-Removed the wav file features
-Removed short-phrase feature
-Cleaned the output
-Added a stop button
+Removed the wav file features.
+Removed short-phrase feature.
+Cleaned the output.
+Added a stop button.
 Cleaning the files...
 
 # Microsoft Bing Speech API: Windows Speech-to-Text Sample

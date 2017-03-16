@@ -351,6 +351,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             this._startButton.IsEnabled = false;
+            this._stopButton.IsEnabled = true;
             this._radioGroup.IsEnabled = false;
 
             this.LogRecognitionStart();
@@ -387,6 +388,27 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
 
                 this.SendAudioHelper((this.Mode == SpeechRecognitionMode.ShortPhrase) ? this.ShortWaveFile : this.LongWaveFile);
             }*/
+        }
+
+        /// <summary>
+        /// Handles the Click event of the _stopButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Reset everything
+            if (this.micClient != null)
+            {
+                this.micClient.EndMicAndRecognition();
+                this.micClient.Dispose();
+                this.micClient = null;
+            }
+
+            this.WriteLine("\n-- - Stop speech recognition\n");
+            this._startButton.IsEnabled = true;
+            this._stopButton.IsEnabled = false;
+            this._radioGroup.IsEnabled = true;
         }
 
         /// <summary>
@@ -654,6 +676,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                         this.micClient.EndMicAndRecognition();
 
                         this._startButton.IsEnabled = true;
+                        this._stopButton.IsEnabled = false;
                         this._radioGroup.IsEnabled = true;
                     }));                
             }
@@ -890,6 +913,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
 
             this._logText.Text = string.Empty;
             this._startButton.IsEnabled = true;
+            this._stopButton.IsEnabled = false;
             this._radioGroup.IsEnabled = true;
         }
     }

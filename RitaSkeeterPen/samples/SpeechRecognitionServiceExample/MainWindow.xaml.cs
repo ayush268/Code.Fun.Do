@@ -337,6 +337,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             // Event handlers for speech recognition results
             this.micClient.OnMicrophoneStatus += this.OnMicrophoneStatus;
             this.micClient.OnPartialResponseReceived += this.OnPartialResponseReceivedHandler;
+            this.micClient.OnResponseReceived += this.OnMicShortPhraseResponseReceivedHandler;
             this.micClient.OnConversationError += this.OnConversationErrorHandler;
         }
 
@@ -364,6 +365,29 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             {
                 this.WriteLine("{0}", e.PhraseResponse.Results[0].DisplayText);
             }
+        }
+
+        /// <summary>
+        /// Called when a final response is received;
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="SpeechResponseEventArgs"/> instance containing the event data.</param>
+        private void OnMicShortPhraseResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
+        {
+            Dispatcher.Invoke((Action)(() =>
+            {
+                // we got the final result, so it we can end the mic reco.  No need to do this
+                // for dataReco, since we already called endAudio() on it as soon as we were done
+                // sending all the data.
+                this.micClient.EndMicAndRecognition();
+
+                this.WriteResponseResult(e);
+
+                _startButton.IsEnabled = true;
+                _stopButton.IsEnabled = false;
+                _radioGroup.IsEnabled = true;
+                _statusText.Text = "Stopped";
+            }));
         }
 
         /// <summary>

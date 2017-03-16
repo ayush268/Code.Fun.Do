@@ -25,3 +25,4 @@ D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServ
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\App.g.cs
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample_MarkupCompile.cache
 D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample.g.resources
+D:\Code.Fun.Do\Cognitive-Speech-STT-Windows-master\samples\SpeechRecognitionServiceExample\obj\x64\Debug\SpeechToText-WPF-Sample_Content.g.cs

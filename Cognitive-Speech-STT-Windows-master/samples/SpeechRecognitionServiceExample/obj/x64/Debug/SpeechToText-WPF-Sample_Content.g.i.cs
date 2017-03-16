@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("batman.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("output.txt")]
 
 

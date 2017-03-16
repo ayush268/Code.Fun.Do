@@ -221,7 +221,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         private void Initialize()
         {
             this.IsMicrophoneClientWithIntent = false;
-            this.IsMicrophoneClientDictation = false;
+            this.IsMicrophoneClientDictation = true;
 
             this.SubscriptionKey = SubscriptionKey;
         }
@@ -272,10 +272,20 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 this.micClient = null;
             }
 
-            this.WriteLine("\n-- - Stop speech recognition\n");
+            this._statusText.Text = "Stopped";
             this._startButton.IsEnabled = true;
             this._stopButton.IsEnabled = false;
             this._radioGroup.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the _outputButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void OutputButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.IO.File.WriteAllText(@"..\..\Output.txt", _logText.Text);
         }
 
         /// <summary>
@@ -283,7 +293,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         private void LogRecognitionStart()
         {
-            this.WriteLine("\n--- Start speech recognition using microphone with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n");
+            this._statusText.Text = "Started";
         }
 
         /// <summary>
@@ -313,7 +323,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         private void CreateMicrophoneRecoClientWithIntent()
         {
-            this.WriteLine("--- Start microphone dictation with Intent detection ----");
+            this._statusText.Text = "Started";
 
             this.micClient =
                 SpeechRecognitionServiceFactory.CreateMicrophoneClientWithIntent(
@@ -348,7 +358,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             if (e.PhraseResponse.Results.Length == 0)
             {
-                this.WriteLine("No phrase response is available.");
+                this._statusText.Text = "No Response";
             }
             else
             {
@@ -417,10 +427,8 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 _radioGroup.IsEnabled = true;
             });
 
-            this.WriteLine("--- Error received by OnConversationErrorHandler() ---");
-            this.WriteLine("Error code: {0}", e.SpeechErrorCode.ToString());
-            this.WriteLine("Error text: {0}", e.SpeechErrorText);
-            this.WriteLine();
+            this._errorText.Text += "Error code: " + e.SpeechErrorCode.ToString() + "\n";
+            this._errorText.Text += "Error text: " + e.SpeechErrorText + "\n";
         }
 
         /// <summary>
@@ -432,11 +440,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             Dispatcher.Invoke(() =>
             {
-                if (e.Recording)
-                {
-                    WriteLine("Please start speaking.");
-                }
-
                 WriteLine();
             });
         }

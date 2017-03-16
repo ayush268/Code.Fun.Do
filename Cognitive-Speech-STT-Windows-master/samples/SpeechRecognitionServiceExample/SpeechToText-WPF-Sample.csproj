@@ -92,5 +92,8 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Output.txt" />
+  </ItemGroup>
   <Import Project="$(_TargetsPath)\Microsoft.CSharp.targets" />
 </Project>

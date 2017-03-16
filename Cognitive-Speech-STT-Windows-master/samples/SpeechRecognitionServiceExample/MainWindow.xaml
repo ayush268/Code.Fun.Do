@@ -6,7 +6,7 @@
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="200"/>
@@ -47,6 +47,6 @@
                 <TextBox x:Name="_errorText" Margin="10,10,15.2,5" TextWrapping="Wrap"/>
             </GroupBox>
         </Grid>
-        <TextBox x:Name="_logText" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalScrollBarVisibility="Visible" Margin="0, 10, 10, 10"/>
+        <TextBox x:Name="_logText" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextWrapping="Wrap" Text="" VerticalScrollBarVisibility="Visible" Margin="0,10.2,10,-10.8"/>
     </Grid>
 </Window>

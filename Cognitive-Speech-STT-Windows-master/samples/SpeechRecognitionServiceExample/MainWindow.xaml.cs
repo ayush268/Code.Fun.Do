@@ -430,7 +430,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 recoSource = "long wav file";
             }*/
 
-            this.WriteLine("\n--- Start speech recognition using microphone" + /*recoSource +*/ " with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n\n");
+            this.WriteLine("\n--- Start speech recognition using microphone" + /*recoSource +*/ " with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n");
         }
 
         /// <summary>

@@ -571,7 +571,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             Dispatcher.Invoke((Action)(() =>
             {
-                this.WriteLine("--- OnMicShortPhraseResponseReceivedHandler ---");
+                //this.WriteLine("--- OnMicShortPhraseResponseReceivedHandler ---");
 
                 // we got the final result, so it we can end the mic reco.  No need to do this
                 // for dataReco, since we already called endAudio() on it as soon as we were done
@@ -590,7 +590,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="SpeechResponseEventArgs"/> instance containing the event data.</param>
-        private void OnDataShortPhraseResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
+        /*private void OnDataShortPhraseResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
         {
             Dispatcher.Invoke((Action)(() =>
             {
@@ -604,7 +604,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 _startButton.IsEnabled = true;
                 _radioGroup.IsEnabled = true;
             }));
-        }
+        }*/
 
         /// <summary>
         /// Writes the response result.
@@ -618,13 +618,13 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             }
             else
             {
-                this.WriteLine("********* Final n-BEST Results *********");
-                for (int i = 0; i < e.PhraseResponse.Results.Length; i++)
+                //this.WriteLine("********* Final n-BEST Results *********");
+                for (int i = 0; i < 1/*e.PhraseResponse.Results.Length*/; i++)
                 {
                     this.WriteLine(
-                        "[{0}] Confidence={1}, Text=\"{2}\"", 
-                        i, 
-                        e.PhraseResponse.Results[i].Confidence,
+                        /*"[{0}] Confidence={1}, Text=\"{2}\""*/"{0}", 
+                        /*i, 
+                        e.PhraseResponse.Results[i].Confidence,*/
                         e.PhraseResponse.Results[i].DisplayText);
                 }
 
@@ -639,7 +639,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <param name="e">The <see cref="SpeechResponseEventArgs"/> instance containing the event data.</param>
         private void OnMicDictationResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
         {
-            this.WriteLine("--- OnMicDictationResponseReceivedHandler ---");
+            //this.WriteLine("--- OnMicDictationResponseReceivedHandler ---");
             if (e.PhraseResponse.RecognitionStatus == RecognitionStatus.EndOfDictation ||
                 e.PhraseResponse.RecognitionStatus == RecognitionStatus.DictationEndSilenceTimeout)
             { 
@@ -664,7 +664,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="SpeechResponseEventArgs"/> instance containing the event data.</param>
-        private void OnDataDictationResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
+        /*private void OnDataDictationResponseReceivedHandler(object sender, SpeechResponseEventArgs e)
         {
             this.WriteLine("--- OnDataDictationResponseReceivedHandler ---");
             if (e.PhraseResponse.RecognitionStatus == RecognitionStatus.EndOfDictation ||
@@ -683,7 +683,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             }
 
             this.WriteResponseResult(e);
-        }
+        }*/
 
         /// <summary>
         /// Called when a final response is received and its intent is parsed
@@ -692,7 +692,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <param name="e">The <see cref="SpeechIntentEventArgs"/> instance containing the event data.</param>
         private void OnIntentHandler(object sender, SpeechIntentEventArgs e)
         {
-            this.WriteLine("--- Intent received by OnIntentHandler() ---");
+            //this.WriteLine("--- Intent received by OnIntentHandler() ---");
             this.WriteLine("{0}", e.Payload);
             this.WriteLine();
         }
@@ -704,9 +704,9 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <param name="e">The <see cref="PartialSpeechResponseEventArgs"/> instance containing the event data.</param>
         private void OnPartialResponseReceivedHandler(object sender, PartialSpeechResponseEventArgs e)
         {
-            this.WriteLine("--- Partial result received by OnPartialResponseReceivedHandler() ---");
+            /*this.WriteLine("--- Partial result received by OnPartialResponseReceivedHandler() ---");
             this.WriteLine("{0}", e.PartialResult);
-            this.WriteLine();
+            this.WriteLine();*/
         }
 
         /// <summary>
@@ -737,8 +737,8 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             Dispatcher.Invoke(() =>
             {
-                WriteLine("--- Microphone status change received by OnMicrophoneStatus() ---");
-                WriteLine("********* Microphone status: {0} *********", e.Recording);
+                //WriteLine("--- Microphone status change received by OnMicrophoneStatus() ---");
+                //WriteLine("********* Microphone status: {0} *********", e.Recording);
                 if (e.Recording)
                 {
                     WriteLine("Please start speaking.");
@@ -873,7 +873,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             // Reset everything
-            //if (this.micClient != null)
+            if (this.micClient != null)
             {
                 this.micClient.EndMicAndRecognition();
                 this.micClient.Dispose();

@@ -97,7 +97,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <value>
         /// <c>true</c> if this instance is microphone client short phrase; otherwise, <c>false</c>.
         /// </value>
-        public bool IsMicrophoneClientShortPhrase { get; set; }
+        //public bool IsMicrophoneClientShortPhrase { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is microphone client dictation.
@@ -191,8 +191,8 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             get
             {
                 return this.IsMicrophoneClientWithIntent ||
-                    this.IsMicrophoneClientDictation ||
-                    this.IsMicrophoneClientShortPhrase;
+                    this.IsMicrophoneClientDictation/* ||
+                    this.IsMicrophoneClientShortPhrase*/;
             }
         }
 
@@ -222,13 +222,13 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             get
             {
-                if (this.IsMicrophoneClientDictation ||
-                    false/*this.IsDataClientDictation*/)
+                /*if (this.IsMicrophoneClientDictation ||
+                    this.IsDataClientDictation)*/
                 {
                     return SpeechRecognitionMode.LongDictation;
                 }
 
-                return SpeechRecognitionMode.ShortPhrase;
+                //return SpeechRecognitionMode.ShortPhrase;
             }
         }
 
@@ -330,7 +330,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         private void Initialize()
         {
-            this.IsMicrophoneClientShortPhrase = true;
+            //this.IsMicrophoneClientShortPhrase = true;
             this.IsMicrophoneClientWithIntent = false;
             this.IsMicrophoneClientDictation = false;
             //this.IsDataClientShortPhrase = false;
@@ -338,7 +338,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             //this.IsDataClientDictation = false;
 
             // Set the default choice for the group of checkbox.
-            this._micRadioButton.IsChecked = true;
+            //this._micRadioButton.IsChecked = true;
 
             this.SubscriptionKey = /*this.GetSubscriptionKeyFromIsolatedStorage()*/ SubscriptionKey;
         }
@@ -394,12 +394,12 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// </summary>
         private void LogRecognitionStart()
         {
-            string recoSource;
+            /*string recoSource;
             //if (this.UseMicrophone)
             {
                 recoSource = "microphone";
             }
-            /*else if (this.Mode == SpeechRecognitionMode.ShortPhrase)
+            else if (this.Mode == SpeechRecognitionMode.ShortPhrase)
             {
                 recoSource = "short wav file";
             }
@@ -408,7 +408,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 recoSource = "long wav file";
             }*/
 
-            this.WriteLine("\n--- Start speech recognition using " + recoSource + " with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n\n");
+            this.WriteLine("\n--- Start speech recognition using microphone" + /*recoSource +*/ " with " + this.Mode + " mode in " + this.DefaultLocale + " language ----\n\n");
         }
 
         /// <summary>
@@ -425,11 +425,11 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             // Event handlers for speech recognition results
             this.micClient.OnMicrophoneStatus += this.OnMicrophoneStatus;
             this.micClient.OnPartialResponseReceived += this.OnPartialResponseReceivedHandler;
-            if (this.Mode == SpeechRecognitionMode.ShortPhrase)
+            /*if (this.Mode == SpeechRecognitionMode.ShortPhrase)
             {
                 this.micClient.OnResponseReceived += this.OnMicShortPhraseResponseReceivedHandler;
             }
-            else if (this.Mode == SpeechRecognitionMode.LongDictation)
+            else */if (this.Mode == SpeechRecognitionMode.LongDictation)
             {
                 this.micClient.OnResponseReceived += this.OnMicDictationResponseReceivedHandler;
             }
@@ -456,7 +456,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             // Event handlers for speech recognition results
             this.micClient.OnMicrophoneStatus += this.OnMicrophoneStatus;
             this.micClient.OnPartialResponseReceived += this.OnPartialResponseReceivedHandler;
-            this.micClient.OnResponseReceived += this.OnMicShortPhraseResponseReceivedHandler;
+            //this.micClient.OnResponseReceived += this.OnMicShortPhraseResponseReceivedHandler;
             this.micClient.OnConversationError += this.OnConversationErrorHandler;
         }
 
@@ -562,6 +562,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         }
         */
 
+        /*
         /// <summary>
         /// Called when a final response is received;
         /// </summary>
@@ -584,6 +585,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
                 _radioGroup.IsEnabled = true;
             }));
         }
+        */
 
         /// <summary>
         /// Called when a final response is received;

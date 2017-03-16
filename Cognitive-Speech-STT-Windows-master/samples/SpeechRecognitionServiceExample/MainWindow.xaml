@@ -12,7 +12,6 @@
             <ColumnDefinition Width="*" MinWidth="200"/>
             <ColumnDefinition Width="*" MinWidth="200"/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">Project Cognitive Services Speech To Text Sample</Label>
         <Grid Grid.Row="0" Grid.Column="1" Margin="0,0,10,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
         </Grid>
@@ -26,7 +25,6 @@
             <GroupBox x:Name="_radioGroup" Grid.Row="0" Margin="10,10,10,10" Padding="0, 0, 10, 10">
                 <StackPanel Orientation="Vertical">
                     <Label>Speech Recognition Source:</Label>
-                    <RadioButton x:Name="_micRadioButton" IsChecked="{Binding ElementName=_mainWindow, Path=IsMicrophoneClientShortPhrase}" Margin="10, 10, 0, 0" Click="RadioButton_Click">Use Microphone with ShortPhrase mode</RadioButton>
                     <RadioButton x:Name="_micDictationRadioButton" IsChecked="{Binding ElementName=_mainWindow, Path=IsMicrophoneClientDictation}" Margin="10, 10, 0, 0" Click="RadioButton_Click">Use Microphone with LongDictation mode</RadioButton>
                     <RadioButton x:Name="_micIntentRadioButton" IsChecked="{Binding ElementName=_mainWindow, Path=IsMicrophoneClientWithIntent}" Margin="10, 10, 0, 0" Click="RadioButton_Click">Use Microphone and intent detection</RadioButton>
                     <Label Margin="30,0,0,0">(* LUIS registration is needed.)</Label>

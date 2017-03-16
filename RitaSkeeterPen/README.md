@@ -4,7 +4,9 @@
 * Removed short-phrase feature.
 * Cleaned the output.
 * Added a stop button.
-* Cleaning the files...
+* Added text output feature.
+* Cleaned files
+* Renamed files
 
 # Microsoft Bing Speech API: Windows Speech-to-Text Sample
 This repo contains the Windows client library & sample for using Speech-to-Text in the Microsoft Bing Speech API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.

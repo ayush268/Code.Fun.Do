@@ -22,13 +22,6 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <GroupBox x:Name="_radioGroup" Grid.Row="0" Margin="10,10,10,10" Padding="0, 0, 10, 10">
-                <StackPanel Orientation="Vertical">
-                    <Label>Speech Recognition Source:</Label>
-                    <RadioButton x:Name="_micDictationRadioButton" Margin="10, 10, 0, 0" Click="RadioButton_Click" Content="Use dictation mode" IsChecked="{Binding IsMicrophoneClientDictation, ElementName=_mainWindow}"/>
-                    <RadioButton x:Name="_micIntentRadioButton" IsChecked="{Binding IsMicrophoneClientWithIntent, ElementName=_mainWindow}" Margin="10, 10, 0, 0" Click="RadioButton_Click" Content="Use intent detection mode"/>
-                </StackPanel>
-            </GroupBox>
             <GroupBox x:Name="groupBox" Margin="10,9.8,10,239" Grid.Row="1">
                 <Label x:Name="_statusLabel" Content="Status:" Margin="10,10,286.2,3.8"/>
             </GroupBox>
@@ -37,9 +30,9 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="_startButton" Grid.Column="1" Content="Start _Recognition" Click="StartButton_Click" Margin="13.2,5,0.2,4.4" Padding="5" IsEnabled="False"/>
+                <Button x:Name="_startButton" Grid.Column="1" Content="Start _Recognition" Click="StartButton_Click" Margin="13.2,5,0.2,4.4" Padding="5"/>
                 <Button x:Name="_stopButton" Content="Stop _Recognition" Grid.Column="1" Margin="132.2,5,-112.8,4.4" Click="StopButton_Click" IsEnabled="False"/>
-                <Button x:Name="_outputButton" Content="Output" Grid.Column="1" Margin="243.2,5,-220.4,0" VerticalAlignment="Top" Height="28" Click="OutputButton_Click" IsEnabled="False"/>
+                <Button x:Name="_outputButton" Content="Output" Grid.Column="1" Margin="243.2,5,-220.4,0" VerticalAlignment="Top" Height="28" Click="OutputButton_Click"/>
             </Grid>
             <TextBlock x:Name="_statusText" HorizontalAlignment="Left" Margin="77,26.8,0,255" Grid.Row="1" TextWrapping="Wrap" Width="269" Text="Stopped"/>
             <GroupBox x:Name="groupBox1" Header="Errors:" Margin="10,68.8,10,0.6" Grid.Row="1">

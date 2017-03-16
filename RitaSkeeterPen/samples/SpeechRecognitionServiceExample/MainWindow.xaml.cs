@@ -34,6 +34,9 @@
 namespace Microsoft.CognitiveServices.SpeechRecognition
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text.RegularExpressions;
     using System.ComponentModel;
     using System.Configuration;
     using System.Diagnostics;
@@ -82,7 +85,7 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         /// <value>
         /// <c>true</c> if this instance is microphone client dictation; otherwise, <c>false</c>.
         /// </value>
-        public bool IsMicrophoneClientDictation { get; set; }
+        public bool IsMicrophoneClientDictation = true;
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is microphone client with intent.
@@ -235,7 +238,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
         {
             this._startButton.IsEnabled = false;
             this._stopButton.IsEnabled = true;
-            this._radioGroup.IsEnabled = false;
 
             this.LogRecognitionStart();
 
@@ -275,7 +277,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             this._statusText.Text = "Stopped";
             this._startButton.IsEnabled = true;
             this._stopButton.IsEnabled = false;
-            this._radioGroup.IsEnabled = true;
         }
 
         /// <summary>
@@ -385,7 +386,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
 
                 _startButton.IsEnabled = true;
                 _stopButton.IsEnabled = false;
-                _radioGroup.IsEnabled = true;
                 _statusText.Text = "Stopped";
             }));
         }
@@ -410,7 +410,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
 
                         this._startButton.IsEnabled = true;
                         this._stopButton.IsEnabled = false;
-                        this._radioGroup.IsEnabled = true;
                     }));
             }
 
@@ -448,7 +447,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             Dispatcher.Invoke(() =>
             {
                 _startButton.IsEnabled = true;
-                _radioGroup.IsEnabled = true;
             });
 
             this._errorText.Text += "Error code: " + e.SpeechErrorCode.ToString() + "\n";
@@ -487,7 +485,14 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             Trace.WriteLine(formattedStr);
             Dispatcher.Invoke(() =>
             {
-                _logText.Text += (formattedStr + "\n");
+                if ((formattedStr == "Erase the last line.") || (formattedStr == "Erase that last line.") || (formattedStr == "Delete the last line.") || (formattedStr == "Delete that last line.") || (formattedStr == "Ignore the last line.") || (formattedStr == "Ignore that last line."))
+                {
+                    string[] x = _logText.Text.Trim().Split('\n');
+                    _logText.Text = string.Join("\n", x.Take(x.Length - 1));
+                }
+                else
+                    _logText.Text += formattedStr;
+                _logText.Text = _logText.Text.Trim() + "\n";
                 _logText.ScrollToEnd();
             });
         }
@@ -525,7 +530,6 @@ namespace Microsoft.CognitiveServices.SpeechRecognition
             this._startButton.IsEnabled = true;
             this._stopButton.IsEnabled = false;
             this._outputButton.IsEnabled = true;
-            this._radioGroup.IsEnabled = true;
         }
     }
 }
